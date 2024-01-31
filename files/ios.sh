@@ -61,7 +61,16 @@ fi
 
 
 # Check if WDA is already installed
-ios apps --udid=$DEVICE_UDID | grep -v grep | grep $WDA_BUNDLEID > /dev/null 2>&1
+# Check if WDA is already installed
+if ios apps --udid=$DEVICE_UDID | grep -v grep | grep $WDA_BUNDLEID > /dev/null 2>&1; then
+  echo "WDA is already installed"
+else
+  echo "App is no installed. Exiting with code 1"
+   # return exit 1 for restart appium container
+  exit 1
+fi
+
+
 if [[ ! $? -eq 0 ]]; then
   echo "$WDA_BUNDLEID app is not installed"
 
