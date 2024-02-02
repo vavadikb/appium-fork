@@ -61,7 +61,6 @@ fi
 
 
 # Check if WDA is already installed
-# Check if WDA is already installed
 if ios apps --udid=$DEVICE_UDID | grep -v grep | grep $WDA_BUNDLEID > /dev/null 2>&1; then
   echo "WDA is already installed"
 else
